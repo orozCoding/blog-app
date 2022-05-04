@@ -25,6 +25,7 @@
 .user-posts-list {
   gap: 20px;
   width: 100%;
+  text-align: left;
 }
 
 .user-posts-list li {

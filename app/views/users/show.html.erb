@@ -21,7 +21,7 @@
       <% @user.recent_posts.each do |post| %>
         <li class="user-posts-item d-flex col">
         <p class="user-post-title">Post #<%= post.id%></p>
-        <p class="user-post-text"><%= post.text%></p>
+        <p class="user-post-text"><%= post.text.truncate(80)%></p>
         <p class="user-post-counters">Comments: <%=post.comments_counter%>, Likes: <%= post.likes_counter%></p>
         </li>
       <%end%>
