@@ -12,5 +12,4 @@ class Post < ApplicationRecord
   end
 
   after_save :increment_posts_counter
-
 end
