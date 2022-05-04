@@ -1,2 +1,19 @@
-<h1>Users#index</h1>
-<p>This is a list of all users</p>
+<h2> Active Users </h2>
+<% if @users_list.empty?  ||  @users_list.nil? %>
+    <li> There are no users </li>
+<%end%>
+<% if @users_list.length > 0 %>
+<ul class="users-list d-flex col">
+  <% @users_list&.each do |user|%>
+    <li class="users-item d-flex">
+      <img src="<%= user.photo %>" alt="User photo" class="user-photo" />
+      <div class="user-data-container d-flex">
+        <p class="user-name">
+        <%= link_to user.name, "/users/#{user.id}" %>
+        </p>
+        <p class="user-posts-number">Number of posts: <%= user.posts_counter %></p>
+      </div>
+    </li>
+  <%end%>
+</ul>
+<%end%>
