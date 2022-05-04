@@ -21,10 +21,11 @@
 .user-posts-list {
   gap: 20px;
   width: 100%;
+  align-items: center;
 }
 
-.user-posts-list li {
-  width: 100%;
+.user-posts-item {
+  width: 500px;
   border: solid 2px black;
   justify-items: flex-start;
   align-items: flex-start;
@@ -65,4 +66,9 @@
   color: blue;
   align-self: flex-end;
   font-size: 13px;
+}
+
+.user-post-header {
+  width: 100%;
+  justify-content: space-between;
 }

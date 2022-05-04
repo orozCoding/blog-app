@@ -1,5 +1,19 @@
-<h1>Posts#show</h1>
-<p>Showing specific post with the id:<%= params[:post_id] %></p>
-<p>Which belongs to the user with the id:<%= params[:user_id] %></p>
-<p>Params: <%= params %></p>
-
+<div class="user-posts-list d-flex col">
+  <div class="user-posts-item d-flex col">
+    <div class="user-post-header d-flex">
+      <p class="user-post-title">Post #<%= @post.id%> by <%= @post.author.name%></p>
+      <p class="user-post-counters">Comments: <%=@post.comments_counter%>, Likes: <%= @post.likes_counter%></p>
+    </div>
+    <p class="user-post-text"><%= @post.text%></p>
+    <hr class="hr-divisor">
+    <div class="user-post-comments-ctn d-flex col">
+      <% if @post.comments_counter > 0 %>
+        <% @post.recent_comments.each do |comment| %>
+          <p> <%= comment.author.name %>: <%= comment.text %> </p>
+        <% end %>
+      <% else %>
+        <p>There are no comments yet... </p>
+      <% end %>
+    </div>
+  </div>
+</div>
