@@ -35,6 +35,10 @@ a {
   cursor: pointer;
 }
 
+ul {
+  list-style: none;
+}
+
 .d-flex {
   display: flex;
 }
@@ -45,6 +49,15 @@ a {
 
 .app-title {
   margin-bottom: 20px;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+nav li {
+  font-weight: bold;
+  color: blue;
 }
 
 .users-list {
