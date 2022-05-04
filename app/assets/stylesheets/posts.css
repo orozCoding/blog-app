@@ -68,6 +68,10 @@
   font-size: 13px;
 }
 
+.read-more-btn:hover {
+  color: rgb(1, 1, 116);
+}
+
 .user-post-header {
   width: 100%;
   justify-content: space-between;
