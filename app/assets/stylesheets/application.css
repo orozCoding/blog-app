@@ -48,20 +48,24 @@ a {
 
 .users-item {
   gap: 50px;
+  width: 500px;
+  justify-content: space-between;
+}
+
+.user-photo {
+  min-width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 .user-data-container {
+  flex-grow: 1;
+  width: 100%;
   border: solid black 2px;
   gap: 30px;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-}
-
-.user-photo {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
 }
 
 .user-name {

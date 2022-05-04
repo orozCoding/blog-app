@@ -1,4 +1,30 @@
-<h1>Users#show</h1>
-<p>Showing User info</p>
-<p>Params: <%= params %></p>
-<p> The id is <%= params[:user_id] %></p>
+<div class="users-item d-flex">
+  <img src="<%= @user.photo %>" alt="User photo" class="user-photo" />
+  <div class="user-data-container d-flex">
+    <p class="user-name">
+      <%= link_to @user.name, "/users/#{@user.id}" %>
+    </p>
+    <p class="user-posts-number">Number of posts: <%= @user.posts_counter %></p>
+  </div>
+</div>
+<div class="user-details-ctn d-flex col">
+  <div class="user-bio-ctn d-flex col">
+    <p class="user-bio-title"> <%= @user.name %>'s bio: </p>
+    <p class="user-bio-text"> <%= @user.bio %> </p>
+  </div>
+  <% if @user.posts.empty? || @user.posts.nil? %>
+    <p> <%=@user.name%> has no posts yet. </p>
+  <%else%>
+  <p>Most recent posts: </p>
+    <ul class="user-posts-list d-flex col">
+      <% @user.recent_posts.each do |post| %>
+        <li class="user-posts-item d-flex col">
+        <p class="user-post-title">Post #<%= post.id%></p>
+        <p class="user-post-text"><%= post.text%></p>
+        <p class="user-post-counters">Comments: <%=post.comments_counter%>, Likes: <%= post.likes_counter%></p>
+        </li>
+      <%end%>
+    </ul>
+    <a href="/users/<%= @user.id %>/posts" class="all-posts-btn">See all posts</a>
+  <%end%>
+</div>
