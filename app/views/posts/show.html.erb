@@ -16,5 +16,15 @@
         <p>There are no comments yet... </p>
       <% end %>
     </div>
+    <div class="form-container">
+      <p>Leave a comment</p>
+      <%= form_with model: [ @post.author, @post, @post.comments.build ] do |form| %>
+        <p>
+          <%= form.label :text, "Comment" %> <br>
+          <%= form.text_area :text, rows: 5, columns: 100 %>
+        </p>
+        <p><%= form.submit %></p>
+      <% end %>
+    </div>
   </div>
 </div>
