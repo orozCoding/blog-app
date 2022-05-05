@@ -7,10 +7,9 @@
     </div>
     <p class="user-post-text"><%= @post.text%></p>
     <hr class="hr-divisor">
-    
-      <%= form_with model: [ @post.author, @post, @post.likes.build ] do |form| %>
-      <%= button_tag( :class => "btn-like") do %>
-       <p class="click"> Like </p>
+    <%= form_with model: [ @post.author, @post, @post.likes.build ] do |form| %>
+      <%= button_tag( :class => "like-btn click") do %>
+        <p> Like </p>
       <% end %>
     <% end %>
     <div class="user-post-comments-ctn d-flex col">
@@ -22,15 +21,6 @@
         <p>There are no comments yet... </p>
       <% end %>
     </div>
-    <div class="form-container">
-      <p>Leave a comment</p>
-      <%= form_with model: [ @post.author, @post, @post.comments.build ] do |form| %>
-        <p>
-          <%= form.label :text, "Comment" %> <br>
-          <%= form.text_area :text, rows: 5, columns: 100 %>
-        </p>
-        <p><%= form.submit %></p>
-      <% end %>
-    </div>
+    <%= render "shared/comment" %>
   </div>
 </div>
