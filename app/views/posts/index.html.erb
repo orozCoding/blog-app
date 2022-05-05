@@ -1,3 +1,37 @@
-<h1>Posts#index</h1>
-<p>Showing all the posts of the user <%= params[:user_id] %></p>
-<p>Paramas: <%= params %></p>
+<%= render "shared/menu" %>
+<div class="users-item d-flex">
+  <img src="<%= @user.photo %>" alt="User photo" class="user-photo" />
+  <div class="user-data-container d-flex">
+    <p class="user-name">
+      <%= link_to @user.name, "/users/#{@user.id}" %>
+    </p>
+    <p class="user-posts-number">Number of posts: <%= @user.posts_counter %></p>
+  </div>
+</div>
+<div class="user-details-ctn d-flex col">
+  <% if @user.posts.empty? || @user.posts.nil? %>
+    <p> <%=@user.name%> has no posts yet. </p>
+  <%else%>
+    <ul class="user-posts-list d-flex col">
+      <% @user.posts.each do |post| %>
+        <li class="user-posts-item d-flex col">
+          <p class="user-post-title">Post #<%= post.id%></p>
+          <p class="user-post-text"><%= post.text.truncate(80)%></p>
+          <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="read-more-btn">Read the post</a>
+          <p class="user-post-counters">Comments: <%=post.comments_counter%>, Likes: <%= post.likes_counter%></p>
+          <hr class="hr-divisor">
+          <div class="user-post-comments-ctn d-flex col">
+            <% if post.comments_counter > 0 %>
+              <% post.recent_comments.each do |comment| %>
+                <p> <%= comment.author.name %>: <%= comment.text %> </p>
+              <% end %>
+            <% else %>
+              <p>There are no comments yet... </p>
+            <% end %>
+          </div>
+        </li>
+      <%end%>
+    </ul>
+    <a href="#" class="all-posts-btn">More</a>
+  <%end%>
+</div>

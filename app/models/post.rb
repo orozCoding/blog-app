@@ -10,4 +10,6 @@ class Post < ApplicationRecord
   def recent_comments
     comments.order('created_at Desc').limit(5)
   end
+
+  after_save :increment_posts_counter
 end

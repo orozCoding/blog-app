@@ -1,0 +1,79 @@
+.user-details-ctn {
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+  width: 500px;
+}
+
+.user-bio-ctn {
+  border: solid 2px black;
+  justify-items: flex-start;
+  align-items: flex-start;
+  padding: 5px 5px;
+  width: 100%;
+  gap: 20px;
+}
+
+.user-bio-title {
+  font-weight: bold;
+}
+
+.user-posts-list {
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+  text-align: left;
+}
+
+.user-posts-item {
+  width: 500px;
+  border: solid 2px black;
+  justify-items: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 10px;
+}
+
+.user-post-title {
+  font-size: 13px;
+}
+
+.user-post-counters {
+  font-size: 12px;
+  align-self: flex-end;
+}
+
+.all-posts-btn {
+  width: 100px;
+  border: 2px solid black;
+  padding: 3px 5px;
+  box-shadow: 2px 2px black;
+}
+
+.all-posts-btn:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.hr-divisor {
+  width: 100%;
+}
+
+.user-post-comments-ctn {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.read-more-btn {
+  color: blue;
+  align-self: flex-end;
+  font-size: 13px;
+}
+
+.read-more-btn:hover {
+  color: rgb(1, 1, 116);
+}
+
+.user-post-header {
+  width: 100%;
+  justify-content: space-between;
+}
