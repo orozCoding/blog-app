@@ -19,7 +19,7 @@
     <p> <%=@user.name%> has no posts yet. </p>
   <%else%>
     <ul class="user-posts-list d-flex col">
-      <% @user.posts.each do |post| %>
+      <% @user.posts.includes([:comments]).each do |post| %>
         <li class="user-posts-item d-flex col">
           <p class="user-post-title">Post #<%= post.id%></p>
           <p class="user-post-text"><%= post.text.truncate(80)%></p>
