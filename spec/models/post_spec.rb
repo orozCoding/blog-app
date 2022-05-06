@@ -18,7 +18,9 @@ RSpec.describe Post, type: :model do
     end
 
     it 'title is not valid if length is greater than 250 characters' do
-      example_post.title = 'Isla de Margarita es parte de Venezuela y se ubica en el mar Caribe, a unos 40 km al norte del continente. Es un destino vacacional popular que incluye 2 penínsulas conectadas por la arena y los manglares del parque nacional Laguna de La Restinga. La mayor parte de la gente vive o se aloja en la península oriental, donde están las ciudades de Pampatar, Porlamar y La Asunción'
+      example_post.title = 'Isla de Margarita es parte de Venezuela y se ubica en el mar Caribe, a unos 40 km al norte del continente.
+      Es un destino vacacional popular que incluye 2 penínsulas conectadas por la arena y los manglares del parque nacional Laguna de La Restinga.
+      La mayor parte de la gente vive o se aloja en la península oriental, donde están las ciudades de Pampatar, Porlamar y La Asunción'
       expect(example_post).to_not be_valid
     end
 
