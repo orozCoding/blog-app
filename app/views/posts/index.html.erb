@@ -11,6 +11,7 @@
 
 <div class="create-new-post-title">
   <%= link_to "Create new post", new_user_post_path(@user) %>
+  <%= render "layouts/flash-alert" %>
 </div>
 
 <div class="user-details-ctn d-flex col">
@@ -42,4 +43,5 @@
 
 <div class="form-container d-flex col">
   <%= render 'shared/form' %>
+  <%= render "layouts/flash-alert" %>
 </div>
