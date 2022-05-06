@@ -8,6 +8,11 @@
     <p class="user-posts-number">Number of posts: <%= @user.posts_counter %></p>
   </div>
 </div>
+
+<div class="create-new-post-title">
+  <%= link_to "Create new post", new_user_post_path(@user) %>
+</div>
+
 <div class="user-details-ctn d-flex col">
   <% if @user.posts.empty? || @user.posts.nil? %>
     <p> <%=@user.name%> has no posts yet. </p>
@@ -32,6 +37,9 @@
         </li>
       <%end%>
     </ul>
-    <a href="#" class="all-posts-btn">More</a>
   <%end%>
+</div>
+
+<div class="form-container d-flex col">
+  <%= render 'shared/form' %>
 </div>

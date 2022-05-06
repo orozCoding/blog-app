@@ -1,0 +1,12 @@
+<p class="from-create-title">Create a new post:</p>
+<%= form_with model: [ @user, @user.posts.build ] do |f| %>
+  <p class="form-item">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

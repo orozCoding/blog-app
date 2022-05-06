@@ -77,3 +77,61 @@
   width: 100%;
   justify-content: space-between;
 }
+
+.form-container {
+  margin-top: 20px;
+  width: 500px;
+  gap: 6px;
+}
+
+.form-container p {
+  gap: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.comment-form-container {
+  width: 450px;
+  gap: 5px;
+}
+
+.comment-form-container form {
+  width: 100%;
+  gap: 7px;
+}
+
+.comment-form-container form textarea {
+  width: 100%;
+  padding: 5px;
+}
+
+.comment-form-container form input {
+  width: 150px;
+  border: 2px solid black;
+  padding: 4px 8px;
+  box-shadow: 2px 2px black;
+  cursor: pointer;
+}
+
+.comment-form-container form input:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.like-btn {
+  padding: 3px 6px;
+  border: solid red 2px;
+  background-color: white;
+  align-self: flex-end;
+}
+
+.like-btn:hover {
+  background-color: rgb(240, 240, 240);
+}
