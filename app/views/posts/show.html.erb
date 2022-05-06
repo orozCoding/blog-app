@@ -14,7 +14,7 @@
     <% end %>
     <div class="user-post-comments-ctn d-flex col">
       <% if @post.comments_counter > 0 %>
-        <% @post.recent_comments.includes([:author]).each do |comment| %>
+        <% @post.comments.includes([:author]).each do |comment| %>
           <p> <%= comment.author.name %>: <%= comment.text %> </p>
         <% end %>
       <% else %>
