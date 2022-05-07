@@ -37,6 +37,7 @@ body {
 a {
   all: unset;
   cursor: pointer;
+  color: inherit;
 }
 
 ul {

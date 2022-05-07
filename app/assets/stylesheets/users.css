@@ -55,3 +55,8 @@
 .all-posts-btn:hover {
   background-color: rgb(235, 235, 235);
 }
+
+.post-nbr-tb {
+  color: blue;
+  font-weight: bold;
+}

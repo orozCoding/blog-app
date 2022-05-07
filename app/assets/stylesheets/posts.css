@@ -16,6 +16,7 @@
 
 .user-bio-title {
   font-weight: bold;
+  color: blue;
 }
 
 .user-posts-list {
@@ -71,6 +72,17 @@
 
 .read-more-btn:hover {
   color: rgb(1, 1, 116);
+}
+
+.post-nbr-tbn,
+.post-nbr-tbn:visited,
+.post-nbr-tbn:active,
+.post-nbr-tbn::after {
+  color: blue;
+}
+
+.post-nbr-tbn:hover {
+  color: blue;
 }
 
 .user-post-header {
