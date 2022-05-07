@@ -14,7 +14,7 @@
     <% end %>
     <div class="user-post-comments-ctn d-flex col">
       <% if @post.comments_counter > 0 %>
-        <% @post.recent_comments.each do |comment| %>
+        <% @post.comments.includes([:author]).each do |comment| %>
           <p> <%= comment.author.name %>: <%= comment.text %> </p>
         <% end %>
       <% else %>
@@ -22,5 +22,6 @@
       <% end %>
     </div>
     <%= render "shared/comment" %>
+    <%= render "shared/flash-alert" %>
   </div>
 </div>

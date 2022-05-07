@@ -37,6 +37,7 @@ body {
 a {
   all: unset;
   cursor: pointer;
+  color: inherit;
 }
 
 ul {
@@ -104,4 +105,12 @@ nav li {
 
 .user-name:hover {
   color: darkred
+}
+
+.flash-success {
+  color: green;
+}
+
+.flash-danger {
+  color: red;
 }

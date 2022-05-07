@@ -25,7 +25,7 @@
     <ul class="user-posts-list d-flex col">
       <% @user.recent_posts.each do |post| %>
         <li class="user-posts-item d-flex col">
-        <p class="user-post-title">Post #<%= post.id%></p>
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="post-nbr-tb"><p class="user-post-title">Post #<%= post.id%></p> </a>
         <p class="user-post-text"><%= post.text.truncate(80)%></p>
         <p class="user-post-counters">Comments: <%=post.comments_counter%>, Likes: <%= post.likes_counter%></p>
         </li>
