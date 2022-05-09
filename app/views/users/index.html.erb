@@ -1,6 +1,6 @@
 <h2 class="user-page-title"> Active Users </h2>
 <% if @users_list.empty?  ||  @users_list.nil? %>
-    <li> There are no users </li>
+    <p> There are no users </p>
 <%end%>
 <% if @users_list.length > 0 %>
 <ul class="users-list d-flex col">
@@ -10,6 +10,7 @@
       <div class="user-data-container d-flex">
         <p class="user-name">
         <%= link_to user.name, "/users/#{user.id}" %>
+        <p> <%= user.username %> </p>
         </p>
         <p class="user-posts-number">Number of posts: <%= user.posts_counter %></p>
       </div>
