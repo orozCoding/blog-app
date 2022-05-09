@@ -8,7 +8,7 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'ffi'
 
 gem 'devise'
-gem 'mailcatcher', '~> 0.8.2'
+# gem 'mailcatcher'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.2', '>= 7.0.2.3'
@@ -60,6 +60,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'mailcatcher'
 end
 
 group :development do
@@ -73,6 +74,8 @@ group :development do
   # gem "spring"
 
   gem 'bullet'
+
+  gem 'letter_opener'
 end
 
 group :test do
