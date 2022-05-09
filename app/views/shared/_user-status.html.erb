@@ -1,2 +1,12 @@
-<p> <%= notice %> </p>
-<p> <%= alert %> </p>
+<div class="user-status-container d-flex col">
+  <%= render 'shared/devise-flashes' %>
+  <% if user_signed_in? %>
+    <p> Welcome <%=current_user.name %></p>
+    <%= button_to "Sign out", destroy_user_session_path, :method => :delete  %>
+  <% else %>
+    <%= link_to 'Log In', "/users/#{user.id}" %>
+  <% end %>
+  <% if @users_list.empty?  ||  @users_list.nil? %>
+    <p> There are no users </p>
+  <%end%>
+</div>
