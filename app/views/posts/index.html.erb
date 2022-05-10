@@ -7,12 +7,10 @@
     <p class="user-posts-number">Number of posts: <%= @user.posts_counter %></p>
   </div>
 </div>
-
 <div class="create-new-post-title">
   <%= link_to "Create new post", new_user_post_path(@user) %>
   <%= render "shared/flash-alert" %>
 </div>
-
 <div class="user-details-ctn d-flex col">
   <% if @user.posts.empty? || @user.posts.nil? %>
     <p> <%=@user.name%> has no posts yet. </p>
@@ -20,14 +18,18 @@
     <ul class="user-posts-list d-flex col">
       <% @user.posts.each do |post| %>
         <li class="user-posts-item d-flex col">
-          <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="post-nbr-tb"><p class="user-post-title">Post #<%= post.id%></p> </a>
+          <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="post-nbr-tb">
+            <p class="user-post-title">Post #<%= post.id%></p>
+          </a>
           <p class="user-post-text"><%= post.text.truncate(80)%></p>
           <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="read-more-btn">Read the post</a>
           <p class="user-post-counters">Comments: <%=post.comments_counter%>, Likes: <%= post.likes_counter%></p>
           <hr class="hr-divisor">
-          <% if can? :manage, post %>
-            <%= button_to "delete", user_post_path(@user, post), method: :delete %>
-          <% end %>
+          <div class="delete-post-btn-container">
+            <% if can? :manage, post %>
+              <%= button_to "Delete Post", user_post_path(@user, post), method: :delete %>
+            <% end %>
+          </div>
           <div class="user-post-comments-ctn d-flex col">
             <% if post.comments_counter > 0 %>
               <% post.recent_comments.includes([:author]).each do |comment| %>
@@ -41,9 +43,4 @@
       <%end%>
     </ul>
   <%end%>
-</div>
-
-<div class="form-container d-flex col">
-  <%= render 'shared/form' %>
-  <%= render "shared/flash-alert" %>
 </div>

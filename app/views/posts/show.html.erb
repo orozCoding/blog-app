@@ -1,5 +1,10 @@
 <div class="user-posts-list d-flex col">
   <div class="user-posts-item d-flex col">
+    <div class="delete-post-btn-container">
+      <% if can? :manage, @post %>
+        <%= button_to "Delete Post", user_post_path(@post.author, @post), method: :delete %>
+      <% end %>
+    </div>
     <div class="user-post-header d-flex">
       <p class="user-post-title">Post #<%= @post.id%> by <%= @post.author.name%></p>
       <p class="user-post-counters">Comments: <%=@post.comments_counter%>, Likes: <%= @post.likes_counter%></p>
@@ -15,6 +20,9 @@
       <% if @post.comments_counter > 0 %>
         <% @post.comments.includes([:author]).each do |comment| %>
           <p> <%= comment.author.name %>: <%= comment.text %> </p>
+          <% if can? :manage, comment %>
+            <%= button_to "Delete comment", user_post_comment_path(@post.author, @post, comment), method: :delete %>
+          <% end %>
         <% end %>
       <% else %>
         <p>There are no comments yet... </p>
