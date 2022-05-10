@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def recent_posts
     posts.order('created_at Desc').limit(3)
   end
+
+  def is?(role)
+    self.role == role.to_s
+  end
 end

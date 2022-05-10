@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
   end
@@ -25,11 +26,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    redirect_to user_posts_path
+    @post.decrement_posts_counter
+    @post.destroy
+  end
+
   private
 
   def post_params
     post_hash = params.require(:post).permit(:title, :text)
-    post_hash[:author] = User.find(params[:user_id])
+    post_hash[:author] = current_user
     post_hash
   end
 end

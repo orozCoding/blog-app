@@ -1,26 +1,40 @@
 <div class="user-posts-list d-flex col">
   <div class="user-posts-item d-flex col">
+    <div class="delete-post-btn-container">
+      <% if can? :manage, @post %>
+        <%= button_to "Delete Post", user_post_path(@post.author, @post), method: :delete, class: 'delete-btn click' %>
+      <% end %>
+    </div>
     <div class="user-post-header d-flex">
       <p class="user-post-title">Post #<%= @post.id%> by <%= @post.author.name%></p>
       <p class="user-post-counters">Comments: <%=@post.comments_counter%>, Likes: <%= @post.likes_counter%></p>
     </div>
     <p class="user-post-text"><%= @post.text%></p>
     <hr class="hr-divisor">
-    <%= form_with model: [ @post.author, @post, @post.likes.build ] do |form| %>
-      <%= button_tag( :class => "like-btn click") do %>
-        <p> Like </p>
+    <% if user_signed_in? %>
+      <%= form_with model: [ @post.author, @post, @post.likes.build ] do |form| %>
+        <%= button_tag( :class => "like-btn click") do %>
+          <p> Like </p>
+        <% end %>
       <% end %>
     <% end %>
     <div class="user-post-comments-ctn d-flex col">
       <% if @post.comments_counter > 0 %>
+        <p> Comments:</p>
+        <br>
         <% @post.comments.includes([:author]).each do |comment| %>
-          <p> <%= comment.author.name %>: <%= comment.text %> </p>
+          <p> <strong><%= comment.author.name %>:</strong> <%= comment.text %> </p>
+          <% if can? :manage, comment %>
+            <%= button_to "Delete comment", user_post_comment_path(@post.author, @post, comment), method: :delete, class: 'delete-btn click' %>
+          <% end %>
         <% end %>
       <% else %>
         <p>There are no comments yet... </p>
       <% end %>
     </div>
-    <%= render "shared/comment" %>
+    <% if user_signed_in? %>
+      <%= render "shared/comment" %>
+    <% end %>
     <%= render "shared/flash-alert" %>
   </div>
 </div>

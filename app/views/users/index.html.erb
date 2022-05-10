@@ -1,7 +1,5 @@
 <h2 class="user-page-title"> Active Users </h2>
 
-<%=  render 'shared/user-status' %>
-
 <% if @users_list.length > 0 %>
 <ul class="users-list d-flex col">
   <% @users_list&.each do |user|%>

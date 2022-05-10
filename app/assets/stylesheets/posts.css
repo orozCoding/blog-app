@@ -139,11 +139,11 @@
 
 .like-btn {
   padding: 3px 6px;
-  border: solid red 2px;
+  border: solid rgb(255, 0, 183) 2px;
   background-color: white;
   align-self: flex-end;
 }
 
 .like-btn:hover {
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(255, 219, 250);
 }

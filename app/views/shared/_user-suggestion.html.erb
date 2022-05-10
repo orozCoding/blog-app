@@ -1,0 +1,13 @@
+<div class="user-status-container d-flex col">
+  <% if user_signed_in? %>
+    <p> Currently logged as <%=current_user.name %></p>
+    <%= button_to "SIGN OUT", destroy_user_session_path, :method => :delete, class: 'user-link-btn click'  %>
+  <% else %>
+    <div class="user-suggestion-ctn d-flex">
+    <%= link_to 'LOG IN', new_user_session_path, class: "user-link" %>
+    or
+    <%= link_to 'SIGN UP', new_user_registration_path, :method => :get, class: "user-link" %>
+    to create a post, comment or leave a like!
+    </div>
+  <% end %>
+</div>
