@@ -7,6 +7,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'ffi'
 
+gem 'devise'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.2', '>= 7.0.2.3'
 
@@ -70,6 +72,8 @@ group :development do
   # gem "spring"
 
   gem 'bullet'
+
+  gem 'letter_opener'
 end
 
 group :test do
