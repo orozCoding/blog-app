@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)  
+  def initialize(user)
     admin = 'admin'
 
     user ||= User.new
