@@ -23,11 +23,11 @@
           <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="post-nbr-tb"><p class="user-post-title">Post #<%= post.id%></p> </a>
           <p class="user-post-text"><%= post.text.truncate(80)%></p>
           <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="read-more-btn">Read the post</a>
-          <% if can? :manage, post %>
-            <%= button_to "Delete", user_post_path(@user, post), method: :delete %>
-          <% end %>
           <p class="user-post-counters">Comments: <%=post.comments_counter%>, Likes: <%= post.likes_counter%></p>
           <hr class="hr-divisor">
+          <% if can? :manage, post %>
+            <%= button_to "delete", user_post_path(@user, post), method: :delete %>
+          <% end %>
           <div class="user-post-comments-ctn d-flex col">
             <% if post.comments_counter > 0 %>
               <% post.recent_comments.includes([:author]).each do |comment| %>

@@ -17,11 +17,10 @@ class CommentsController < ApplicationController
     end
   end
 
-  def delete
-    @user = User.find(params[:user_id])
-    @post = Post.find(params[:post_id])
+  def destroy
     @comment = Comment.find(params[:id])
-    redirect_to "/users/#{@user.id}/posts/#{@post.id}"
+    @comment.decrement_comments_counter
+    redirect_to user_post_path
     @comment.destroy
   end
 
