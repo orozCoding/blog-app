@@ -6,7 +6,7 @@
   <% else %>
     <%= button_to 'Log In', "/users/sign_in" %>
   <% end %>
-  <% if @users_list.empty?  ||  @users_list.nil? %>
+  <% if User.all.empty?  ||  User.all.nil? %>
     <p> There are no users </p>
   <%end%>
 </div>
