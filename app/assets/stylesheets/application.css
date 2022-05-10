@@ -31,7 +31,25 @@ body {
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+}
+
+header,
+header nav,
+header nav ul,
+header nav ul li {
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header {
+  gap: 30px;
+  padding: 10px;
+}
+
+footer {
+  margin: 20px;
 }
 
 a {
@@ -52,18 +70,43 @@ ul {
   flex-direction: column;
 }
 
-.app-title {
-  margin-bottom: 20px;
-}
-
-nav {
-  margin-bottom: 20px;
-}
-
-nav li {
+nav li,
+.user-link {
   font-weight: bold;
   color: blue;
 }
+
+ul {
+  gap: 15px;
+}
+
+.user-status-container {
+  gap: 15px;
+}
+
+.user-link::after,
+.user-link:active,
+.user-link:visited {
+  color: blue;
+}
+
+.user-link:hover {
+  color: rgb(53, 100, 238);
+}
+
+.user-link-btn {
+  background: none;
+  padding: 2px 6px;
+  color: blue;
+  font-weight: bold;
+  border: none;
+  font-size: 16px;
+}
+
+.user-link-btn:hover {
+  color: rgb(53, 100, 238);
+}
+
 
 .create-new-post-title {
   font-weight: bold;
@@ -113,4 +156,42 @@ nav li {
 
 .flash-danger {
   color: red;
+}
+
+.user-suggestion-ctn {
+  gap: 10px;
+}
+
+.form {
+  padding: 10px 0;
+  gap: 15px;
+}
+
+.form-btn {
+  color: blue;
+  padding: 2px 5px;
+  background-color: white;
+}
+
+.form-btn:hover {
+  background-color: rgb(227, 227, 227);
+}
+
+.delete-btn {
+  padding: 2px 6px;
+  color: red;
+  background-color: white;
+  border: solid 2px red;
+}
+
+.delete-btn:hover {
+  background-color: rgb(255, 213, 213);
+}
+
+.devise-error-text {
+  color: red;
+}
+
+.devise-alert {
+  color: rgb(233, 140, 0);
 }

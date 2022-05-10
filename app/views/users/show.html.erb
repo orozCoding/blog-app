@@ -13,10 +13,6 @@
     <p class="user-bio-text"> <%= @user.bio %> </p>
   </div>
 
-  <div class="create-new-post-title">
-    <%= link_to "Create new post", new_user_post_path(@user) %>
-  </div>
-
   <% if @user.posts.empty? || @user.posts.nil? %>
     <p> <%=@user.name%> has no posts yet. </p>
   <%else%>

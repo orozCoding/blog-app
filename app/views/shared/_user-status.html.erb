@@ -1,10 +1,9 @@
-<div class="user-status-container d-flex col">
-  <%= render 'shared/devise-flashes' %>
+<div class="user-status-container d-flex">
   <% if user_signed_in? %>
     <p> Welcome <%=current_user.name %></p>
-    <%= button_to "Sign out", destroy_user_session_path, :method => :delete  %>
+    <%= button_to 'SIGN OUT', destroy_user_session_path, :method => :delete, class: "user-link-btn click"  %>
   <% else %>
-    <%= button_to 'Log In', "/users/sign_in" %>
+    <%= link_to 'LOG IN', new_user_session_path, :method => :get, class: "user-link" %>
   <% end %>
   <% if User.all.empty?  ||  User.all.nil? %>
     <p> There are no users </p>

@@ -7,10 +7,6 @@
     <p class="user-posts-number">Number of posts: <%= @user.posts_counter %></p>
   </div>
 </div>
-<div class="create-new-post-title">
-  <%= link_to "Create new post", new_user_post_path(@user) %>
-  <%= render "shared/flash-alert" %>
-</div>
 <div class="user-details-ctn d-flex col">
   <% if @user.posts.empty? || @user.posts.nil? %>
     <p> <%=@user.name%> has no posts yet. </p>
@@ -27,7 +23,7 @@
           <hr class="hr-divisor">
           <div class="delete-post-btn-container">
             <% if can? :manage, post %>
-              <%= button_to "Delete Post", user_post_path(@user, post), method: :delete %>
+              <%= button_to "Delete Post", user_post_path(@user, post), method: :delete, class: 'delete-btn click' %>
             <% end %>
           </div>
           <div class="user-post-comments-ctn d-flex col">

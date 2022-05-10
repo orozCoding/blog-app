@@ -8,11 +8,17 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
-
-  <body class="d-flex col">
+  <header class="header d-flex">
   <h1 class="app-title">THE BLOG APP!</h1>
   <%= render 'shared/menu' %>
   <%=  render 'shared/user-status' %>
+  </header>
+
+  <body class="d-flex col">
+  <%= render 'shared/devise-flashes' %><br>
     <%= yield %>
+    <footer>
+    <%=  render 'shared/user-suggestion' %>
+    </footer>
   </body>
 </html>

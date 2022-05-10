@@ -1,7 +1,12 @@
-<nav>
-  <ul>
+<nav class="d-flex">
+  <ul class="d-flex">
     <li>
-      <a href="/">HOME</a>
+      <a href="/" class="user-link">HOME</a>
     </li>
+    <% if user_signed_in? %>
+      <li class="create-new-post-title">
+        <%= link_to "CREATE POST", new_user_post_path(current_user), class: "user-link"  %>
+      </li>
+    <% end %>
   </ul>
 </nav>
