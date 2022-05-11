@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  example_user = User.new(name: 'Carlos',
-                          photo: 'url',
-                          bio: 'The Bio from Carlos',
-                          posts_counter: 0)
-  example_user.save
-
-  example_post = Post.new(author_id: example_user.id, title: 'random-title', text: 'random body')
-
-  before(:all) { example_post.save }
-
   describe 'validate data: ' do
+    User.destroy_all
+
+    example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                               password_confirmation: 'password')
+
+    Post.destroy_all
+
+    example_post = Post.create(id: 1, author: example_user, title: 'La vida', text: 'Es bella')
+
     it 'title is not valid if it is empty' do
       example_post.title = ''
+
       expect(example_post).to_not be_valid
     end
 
@@ -26,6 +26,7 @@ RSpec.describe Post, type: :model do
 
     it 'comments_counter is valid when value is an integer, and it is zero or greater' do
       example_post.title = 'random-title'
+      example_post.likes_counter = 0
       example_post.comments_counter = 0
       expect(example_post).to be_valid
       example_post.comments_counter = 99
@@ -57,23 +58,27 @@ RSpec.describe Post, type: :model do
       example_post.likes_counter = 'test'
       expect(example_post).to_not be_valid
     end
+    User.destroy_all
+    Post.destroy_all
   end
 
   describe 'recent_comments method' do
-    before do
-      Comment.create(post: example_post, author_id: example_user.id, text: 'one')
-      Comment.create(post: example_post, author_id: example_user.id, text: 'two')
-      Comment.create(post: example_post, author_id: example_user.id, text: 'three')
-      Comment.create(post: example_post, author_id: example_user.id, text: 'four')
-      Comment.create(post: example_post, author_id: example_user.id, text: 'five')
-      Comment.create(post: example_post, author_id: example_user.id, text: 'six')
-      Comment.create(post: example_post, author_id: example_user.id, text: 'seven')
-      Comment.create(post: example_post, author_id: example_user.id, text: 'eight')
-    end
+    example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                               password_confirmation: 'password')
+
+    example_post = Post.create(id: 1, author: example_user, title: 'La vida', text: 'Es bella')
 
     it 'should return up to five latest comments' do
-      expect(example_post.recent_comments.length).to be(5)
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'one')
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'two')
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'three')
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'four')
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'five')
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'six')
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'seven')
+      Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'eight')
       expect(example_post.recent_comments[0].text).to eq 'eight'
+      expect(example_post.recent_comments.length).to eq(5)
     end
   end
 end

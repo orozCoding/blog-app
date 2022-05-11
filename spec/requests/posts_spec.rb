@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
+  before(:example) do
+    User.destroy_all
+    Post.destroy_all
+    user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                       password_confirmation: 'password')
+
+    Post.destroy_all
+    Post.create(id: 1, author: user, title: 'La vida', text: 'Es bella')
+  end
+
   describe 'Using Posts controller' do
     it 'gets posts list from an user' do
       get '/users/1/posts'

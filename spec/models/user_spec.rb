@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  example_user = User.new(name: 'Carlos',
-                          photo: 'url',
-                          bio: 'The Bio from Carlos',
-                          posts_counter: 0)
-
-  before(:all) { example_user.save }
-
   describe 'validate data: ' do
+    User.destroy_all
+
+    example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                               password_confirmation: 'password')
+
     it 'not valid if name is empty' do
       example_user.name = ''
       expect(example_user).to_not be_valid
@@ -32,6 +30,11 @@ RSpec.describe User, type: :model do
   end
 
   describe 'recent_posts method' do
+    User.destroy_all
+
+    example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                               password_confirmation: 'password')
+
     before do
       Post.create(author_id: example_user.id, title: 'example_title', text: 'one')
       Post.create(author_id: example_user.id, title: 'example_title', text: 'two')
