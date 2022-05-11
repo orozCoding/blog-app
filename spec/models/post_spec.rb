@@ -63,12 +63,13 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'recent_comments method' do
-    example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
-                               password_confirmation: 'password')
-
-    example_post = Post.create(id: 1, author: example_user, title: 'La vida', text: 'Es bella')
-
     it 'should return up to five latest comments' do
+      example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                                 password_confirmation: 'password')
+      example_user.save
+
+      example_post = Post.create(id: 1, author: example_user, title: 'La vida', text: 'Es bella')
+
       Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'one')
       Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'two')
       Comment.create(post_id: example_post.id, author_id: example_user.id, text: 'three')
