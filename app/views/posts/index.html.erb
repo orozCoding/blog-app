@@ -20,16 +20,17 @@
           <p class="user-post-text"><%= post.text.truncate(80)%></p>
           <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class="read-more-btn">Read the post</a>
           <p class="user-post-counters">Comments: <%=post.comments_counter%>, Likes: <%= post.likes_counter%></p>
-          <hr class="hr-divisor">
           <div class="delete-post-btn-container">
             <% if can? :manage, post %>
               <%= button_to "Delete Post", user_post_path(@user, post), method: :delete, class: 'delete-btn click' %>
             <% end %>
           </div>
+          <hr class="hr-divisor">
           <div class="user-post-comments-ctn d-flex col">
             <% if post.comments_counter > 0 %>
+              <strong><p>Recent comments:</p></strong>
               <% post.recent_comments.includes([:author]).each do |comment| %>
-                <p> <%= comment.author.name %>: <%= comment.text %> </p>
+                <p> <strong><%= comment.author.name %>:</strong> <%= comment.text %> </p>
               <% end %>
             <% else %>
               <p>There are no comments yet... </p>
