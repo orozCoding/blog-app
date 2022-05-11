@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'validate data: ' do
     User.destroy_all
+    Post.destroy_all
+    User.delete_all
+    Post.delete_all
 
     example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
                                password_confirmation: 'password')
-
-    Post.destroy_all
 
     example_post = Post.create(id: 1, author: example_user, title: 'La vida', text: 'Es bella')
 
@@ -60,6 +61,8 @@ RSpec.describe Post, type: :model do
     end
     User.destroy_all
     Post.destroy_all
+    User.delete_all
+    Post.delete_all
   end
 
   describe 'recent_comments method' do

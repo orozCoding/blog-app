@@ -21,7 +21,6 @@ RSpec.describe 'Index Page', type: :system do
       Post.create(author: user1, title: 'Test', text: 'Testing a lot')
     end
 
-
     it 'shows the names of each user' do
       visit users_path
       sleep(5)
@@ -31,8 +30,8 @@ RSpec.describe 'Index Page', type: :system do
 
     it 'shows the photos of each user' do
       visit users_path
-      expect(page).to have_css("img[src*=photo1]")
-      expect(page).to have_css("img[src*=photo2]")
+      expect(page).to have_css('img[src*=photo1]')
+      expect(page).to have_css('img[src*=photo2]')
     end
 
     it 'shows the photos of each user' do

@@ -34,7 +34,7 @@ RSpec.describe 'Login Page', type: :system do
       User.delete_all
 
       user = User.create(username: 'angel', email: 'loco@loco.com', name: 'Angel', password: 'password',
-                  password_confirmation: 'password')
+                         password_confirmation: 'password')
       user.confirm
     end
 

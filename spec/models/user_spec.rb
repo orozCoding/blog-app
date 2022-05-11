@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'validate data: ' do
     User.destroy_all
+    User.delete_all
 
     example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
                                password_confirmation: 'password')
@@ -28,25 +29,22 @@ RSpec.describe User, type: :model do
       expect(example_user).to be_valid
     end
     User.destroy_all
+    User.delete_all
   end
 
   describe 'recent_posts method' do
-
-    
-    
     it 'should return three latest posts' do
       example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
                                  password_confirmation: 'password')
-  
-    
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'one')
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'two')
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'three')
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'four')
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'five')
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'six')
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'seven')
-        Post.create(author_id: example_user.id, title: 'example_title', text: 'eigth')
+
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'one')
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'two')
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'three')
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'four')
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'five')
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'six')
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'seven')
+      Post.create(author_id: example_user.id, title: 'example_title', text: 'eigth')
       expect(example_user.recent_posts.length).to eq(3)
       expect(example_user.recent_posts[0].text).to eq 'eigth'
     end
