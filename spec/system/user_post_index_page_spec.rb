@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User show page', type: :system do
+RSpec.describe 'User post index page', type: :system do
   before(:all) do
     driven_by(:rack_test)
   end
