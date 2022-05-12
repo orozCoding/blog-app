@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  example_user = User.new(name: 'Carlos',
-                          photo: 'url',
-                          bio: 'The Bio from Carlos',
-                          posts_counter: 0)
-
-  before(:all) { example_user.save }
-
   describe 'validate data: ' do
+    User.destroy_all
+    User.delete_all
+
+    example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                               password_confirmation: 'password')
+
     it 'not valid if name is empty' do
       example_user.name = ''
       expect(example_user).to_not be_valid
@@ -29,10 +28,15 @@ RSpec.describe User, type: :model do
       example_user.posts_counter = 99
       expect(example_user).to be_valid
     end
+    User.destroy_all
+    User.delete_all
   end
 
   describe 'recent_posts method' do
-    before do
+    it 'should return three latest posts' do
+      example_user = User.create(id: 1, username: 'angel', email: 'test@test.com', name: 'Mr. Test', password: 'password',
+                                 password_confirmation: 'password')
+
       Post.create(author_id: example_user.id, title: 'example_title', text: 'one')
       Post.create(author_id: example_user.id, title: 'example_title', text: 'two')
       Post.create(author_id: example_user.id, title: 'example_title', text: 'three')
@@ -41,9 +45,6 @@ RSpec.describe User, type: :model do
       Post.create(author_id: example_user.id, title: 'example_title', text: 'six')
       Post.create(author_id: example_user.id, title: 'example_title', text: 'seven')
       Post.create(author_id: example_user.id, title: 'example_title', text: 'eigth')
-    end
-
-    it 'should return three latest posts' do
       expect(example_user.recent_posts.length).to eq(3)
       expect(example_user.recent_posts[0].text).to eq 'eigth'
     end
