@@ -11,7 +11,7 @@ class Api::V1::CommentsController < Api::V1::BaseController
     text = params[:text]
     post_id = params[:post_id]
 
-    @comment = Comment.new(author_id: user_id, post_id: post_id, text: text)
+    @comment = Comment.new(author_id: user_id, post_id:, text:)
 
     if @comment.save
       render json: @comment, status: 201
