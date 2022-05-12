@@ -20,7 +20,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  
-  post 'auth/login', to: 'authentication#login'
 
+  post 'auth/login', to: 'authentication#login'
 end
