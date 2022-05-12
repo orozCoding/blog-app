@@ -29,7 +29,13 @@ Coming soon
 
 - clone the following repo `https://github.com/orozCoding/blog-app.git`
 - cd into the directory and run `bundle install` to install dependencies
-- run `rails s` to start the app in `localhost:3000`
+- Run `rails db:create` and then `rails db:migrate`
+- Run `rails s` to start the app
+- Visit `localhost:3000` in your browser
+
+### Tests
+
+- To run the tests, simply run `rspec` command
 
 # Credits
 
