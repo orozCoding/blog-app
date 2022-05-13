@@ -66,6 +66,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'rswag-specs'
   gem 'webdrivers'
 end
 
@@ -90,4 +91,5 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
